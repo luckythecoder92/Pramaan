@@ -1,0 +1,47 @@
+# FastAPI Backend
+
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Configuration and Validation
+
+pydantic-settings
+python-dotenv
+email-validator
+bcrypt
+PyJWT
+supabase
+gnani-vachana
+
+# OpenAI Embeddings and LLM
+
+openai
+voyageai
+groq
+
+# Vector Database
+
+qdrant-client
+
+# Document Processing
+
+pypdf
+python-docx
+beautifulsoup4
+markdown
+
+# Tokenization and Chunking
+
+tiktoken
+langchain-text-splitters
+
+# HTTP Requests
+
+httpx
+
+# Testing
+
+pytest
+pytest-asyncio
+httpx

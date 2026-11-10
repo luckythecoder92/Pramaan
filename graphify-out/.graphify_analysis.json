@@ -1,0 +1,249 @@
+{
+  "communities": {
+    "0": [
+      "backend_app_services_qdrant_services",
+      "backend_app_services_qdrant_services_create_client",
+      "backend_app_services_qdrant_services_point_id",
+      "backend_app_services_qdrant_services_py_any",
+      "backend_app_services_qdrant_services_qdrantserviceerror",
+      "backend_app_services_qdrant_services_rationale_20",
+      "backend_app_services_qdrant_services_rationale_62",
+      "backend_app_services_qdrant_services_rationale_81",
+      "backend_app_services_qdrant_services_store_chunks",
+      "backend_app_services_qdrant_services_test_connection",
+      "backend_app_services_qdrant_services_validate_vectors",
+      "backend_app_services_vector_service",
+      "backend_app_services_vector_service_create_collection",
+      "backend_test_qdrant_test_connection_uses_qdrant_client",
+      "backend_test_qdrant_test_store_chunks_rejects_invalid_vector_dimension",
+      "dotenv",
+      "os",
+      "qdrant_client",
+      "qdrant_client_models",
+      "qdrantclient",
+      "runtimeerror",
+      "uuid"
+    ],
+    "1": [
+      "backend_app_main",
+      "backend_app_main_get_document",
+      "backend_app_main_get_documents",
+      "backend_app_main_get_user",
+      "backend_app_main_home",
+      "backend_app_routes_search",
+      "backend_app_routes_search_py_post",
+      "backend_app_routes_search_semantic_search",
+      "backend_app_schemas_search",
+      "backend_app_schemas_search_py_basemodel",
+      "backend_app_schemas_search_searchrequest",
+      "backend_app_services_qdrant_services_search_chunks",
+      "fastapi",
+      "get",
+      "pydantic"
+    ],
+    "2": [
+      "backend_app_services_context_service",
+      "backend_app_services_context_service_build_context",
+      "backend_app_services_context_service_clean_text",
+      "backend_app_services_context_service_py_any",
+      "backend_app_services_context_service_rationale_10",
+      "backend_app_services_context_service_rationale_21",
+      "backend_test_context",
+      "backend_test_context_test_context_builder_excludes_empty_chunks_and_enforces_budget",
+      "backend_test_context_test_context_builder_formats_text_and_sources",
+      "backend_test_context_test_context_builder_rejects_empty_question",
+      "collections_abc",
+      "pytest",
+      "re",
+      "typing"
+    ],
+    "3": [
+      "backend_app_routes_documents",
+      "backend_app_routes_documents_py_post",
+      "backend_app_routes_documents_upload_document",
+      "backend_app_services_pdf_services",
+      "backend_app_services_pdf_services_extract_text",
+      "backend_app_services_pdf_services_page_numbers_for_chunks",
+      "backend_app_services_pdf_services_rationale_29",
+      "backend_app_services_pdf_services_split_text",
+      "langchain_text_splitters",
+      "pathlib",
+      "pypdf",
+      "uploadfile"
+    ],
+    "4": [
+      "backend_app_routes_questions",
+      "backend_app_routes_questions_ask_question",
+      "backend_app_routes_questions_py_post",
+      "backend_app_schemas_question",
+      "backend_app_schemas_question_py_basemodel",
+      "backend_app_schemas_question_questionrequest",
+      "backend_app_services_embedding_services",
+      "backend_app_services_embedding_services_generate_query_embedding",
+      "backend_app_services_question_service",
+      "backend_app_services_question_service_process_question",
+      "backend_app_services_question_service_rationale_7",
+      "voyageai"
+    ],
+    "5": [
+      "backend_app_services_qdrant_services_create_collection",
+      "backend_app_services_qdrant_services_rationale_42",
+      "backend_test_qdrant",
+      "backend_test_qdrant_test_create_collection_rejects_incompatible_dimension",
+      "backend_test_qdrant_test_create_collection_when_missing",
+      "backend_test_qdrant_test_search_applies_document_filter",
+      "backend_test_qdrant_test_store_chunks_batches_and_uses_deterministic_ids",
+      "backend_test_qdrant_vector",
+      "unittest_mock"
+    ],
+    "6": [
+      "backend_app_services_embedding_services_generate_embeddings",
+      "backend_test_embedding",
+      "backend_test_embedding_test_empty_document_does_not_call_provider",
+      "backend_test_embedding_test_empty_query_is_rejected",
+      "backend_test_embedding_test_generate_embeddings_returns_provider_vectors",
+      "sys",
+      "types"
+    ]
+  },
+  "cohesion": {
+    "0": 0.1341991341991342,
+    "1": 0.2,
+    "2": 0.21978021978021978,
+    "3": 0.25757575757575757,
+    "4": 0.25757575757575757,
+    "5": 0.3055555555555556,
+    "6": 0.3333333333333333
+  },
+  "gods": [
+    {
+      "id": "backend_app_services_qdrant_services_store_chunks",
+      "label": "store_chunks()",
+      "degree": 10
+    },
+    {
+      "id": "backend_app_services_context_service_build_context",
+      "label": "build_context()",
+      "degree": 10
+    },
+    {
+      "id": "backend_app_routes_documents_upload_document",
+      "label": "upload_document()",
+      "degree": 9
+    },
+    {
+      "id": "backend_app_services_qdrant_services_qdrantserviceerror",
+      "label": "QdrantServiceError",
+      "degree": 8
+    },
+    {
+      "id": "backend_app_services_qdrant_services_search_chunks",
+      "label": "search_chunks()",
+      "degree": 8
+    },
+    {
+      "id": "backend_app_services_question_service_process_question",
+      "label": "process_question()",
+      "degree": 7
+    },
+    {
+      "id": "backend_app_services_qdrant_services_create_collection",
+      "label": "create_collection()",
+      "degree": 7
+    },
+    {
+      "id": "backend_app_services_embedding_services_generate_query_embedding",
+      "label": "generate_query_embedding()",
+      "degree": 6
+    },
+    {
+      "id": "backend_app_routes_search_semantic_search",
+      "label": "semantic_search()",
+      "degree": 5
+    },
+    {
+      "id": "backend_app_services_embedding_services_generate_embeddings",
+      "label": "generate_embeddings()",
+      "degree": 5
+    }
+  ],
+  "surprises": [
+    {
+      "source": "test_empty_query_is_rejected()",
+      "target": "generate_query_embedding()",
+      "source_files": [
+        "backend/test_embedding.py",
+        "backend/app/services/embedding_services.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities; peripheral node `test_empty_query_is_rejected()` unexpectedly reaches hub `generate_query_embedding()`"
+    },
+    {
+      "source": "semantic_search()",
+      "target": "SearchRequest",
+      "source_files": [
+        "backend/app/routes/search.py",
+        "backend/app/schemas/search.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source"
+    },
+    {
+      "source": "ask_question()",
+      "target": "QuestionRequest",
+      "source_files": [
+        "backend/app/routes/questions.py",
+        "backend/app/schemas/question.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source"
+    },
+    {
+      "source": "upload_document()",
+      "target": "store_chunks()",
+      "source_files": [
+        "backend/app/routes/documents.py",
+        "backend/app/services/qdrant_services.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "test_store_chunks_batches_and_uses_deterministic_ids()",
+      "target": "store_chunks()",
+      "source_files": [
+        "backend/test_qdrant.py",
+        "backend/app/services/qdrant_services.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `build_context()` connect `build_context` to `embedding_services.py`?",
+      "why": "High betweenness centrality (0.114) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `qdrant_services.py` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1341991341991342 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `store_chunks()` connect `qdrant_services.py` to `documents.py`, `test_qdrant.py`?",
+      "why": "High betweenness centrality (0.083) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `search_chunks()` connect `main.py` to `qdrant_services.py`, `embedding_services.py`, `test_qdrant.py`?",
+      "why": "High betweenness centrality (0.078) - this node is a cross-community bridge."
+    }
+  ]
+}

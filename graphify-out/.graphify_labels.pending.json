@@ -1,0 +1,23 @@
+{
+  "1": "eval_retrieval.py",
+  "2": "getApiErrorMessage",
+  "3": "test_multitenant.py",
+  "4": "lucide-react",
+  "5": "test_llm_service.py",
+  "6": "CitationPanel.tsx",
+  "7": "chat_service.py",
+  "8": "documents.py",
+  "9": "AuthContext.tsx",
+  "10": "package.json",
+  "11": "ChatPage.tsx",
+  "12": "DocumentList.tsx",
+  "13": "DashboardPage.tsx",
+  "14": "DocumentsContext.tsx",
+  "15": "compilerOptions",
+  "16": "useSpeechRecognition.ts",
+  "18": "ToastContext.tsx",
+  "20": "cn",
+  "21": "vite-env.d.ts",
+  "22": "tailwind.config.js",
+  "23": "postcss.config.js"
+}
