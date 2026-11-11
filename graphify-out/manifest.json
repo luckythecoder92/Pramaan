@@ -7,9 +7,9 @@
     "ast_empty": true
   },
   "backend/app/main.py": {
-    "mtime": 1794330575.2270539,
-    "seen": 1794332141.6133802,
-    "ast_hash": "c2d9d156f12d8fd3853037076dc20208",
+    "mtime": 1794390120.2420363,
+    "seen": 1794390134.4161453,
+    "ast_hash": "e01e23a183b8ecd374ea15ab946b22df",
     "semantic_hash": ""
   },
   "backend/app/routes/documents.py": {
@@ -103,9 +103,9 @@
     "semantic_hash": ""
   },
   "backend/app/core/config.py": {
-    "mtime": 1794330583.6287227,
-    "seen": 1794332141.6133802,
-    "ast_hash": "64e40654e93a402ca52d3c7bbc00aff0",
+    "mtime": 1794390115.4627087,
+    "seen": 1794390134.4161453,
+    "ast_hash": "4dfd77b24d486b0c398c4cb36388e442",
     "semantic_hash": ""
   },
   "backend/app/routes/chat.py": {
@@ -211,9 +211,9 @@
     "semantic_hash": ""
   },
   "backend/app/routes/auth.py": {
-    "mtime": 1794323967.7531812,
-    "seen": 1794324049.5141077,
-    "ast_hash": "bd7797cd2a998a1e2123f7ebfe6a5069",
+    "mtime": 1794390213.31308,
+    "seen": 1794390232.5788152,
+    "ast_hash": "21a287413e0439da86fda2f6cc729044",
     "semantic_hash": ""
   },
   "backend/app/schemas/auth.py": {

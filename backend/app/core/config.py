@@ -6,6 +6,17 @@ import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 load_dotenv()
+
+
+def normalize_origin(origin: str) -> str:
+    """Trim an origin so it matches the byte-for-byte Origin header a browser sends.
+
+    Browsers never include a trailing slash, so 'https://app.example.com/' would
+    never match and CORS preflights would fail with no Access-Control-Allow-Origin.
+    """
+    return origin.strip().rstrip("/")
+
+
 class Settings(BaseSettings):
     supabase_url: str | None = None
     supabase_publishable_key: str | None = None
@@ -23,12 +34,43 @@ class Settings(BaseSettings):
     groq_reasoning_effort: str = "high"
     groq_timeout: float = 60.0
     groq_max_completion_tokens: int = 2048
-    frontend_origins: str = os.getenv("FRONTEND_URL")
+    # Sourced from the environment (FRONTEND_URL, or FRONTEND_ORIGINS which
+    # overrides it). Comma-separated when the app is reachable from several
+    # origins, e.g. production plus the Vite dev server.
+    frontend_origins: str | None = os.getenv("FRONTEND_URL")
+    # Optional regex for preview deployments, e.g. https://.*\.vercel\.app
+    frontend_origin_regex: str | None = None
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).resolve().parents[2] / ".env",
         extra="ignore",
     )
+
+    @property
+    def cors_origins(self) -> list[str]:
+        """Parsed, normalized allow-list sourced from the environment.
+
+        Raises at startup if nothing is configured: an empty allow-list makes
+        every browser request fail with 'No Access-Control-Allow-Origin header',
+        which is much harder to diagnose than a boot error naming the variable.
+        """
+        origins = [
+            origin
+            for origin in (
+                normalize_origin(candidate)
+                for candidate in (self.frontend_origins or "").split(",")
+            )
+            if origin
+        ]
+        if not origins and not self.frontend_origin_regex:
+            raise RuntimeError(
+                "No frontend origin configured: set FRONTEND_URL in .env "
+                "(or in the deployment environment) to the origin(s) allowed to "
+                "call this API, comma-separated, e.g. "
+                "'https://app.example.com,http://localhost:5173'. "
+                "FRONTEND_ORIGIN_REGEX is an alternative for preview domains."
+            )
+        return origins
 
 
 @lru_cache

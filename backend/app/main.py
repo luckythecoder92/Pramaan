@@ -9,18 +9,24 @@ from app.routes.voice import router as voice_router
 from app.core.database import init_database
 from app.core.config import get_settings
 from typing import List
+import logging
 
 from fastapi import FastAPI
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
 # The React client is served from a different origin during local development
-# and from a separate static host in production. Origins are configurable with
-# FRONTEND_ORIGINS (comma-separated); the defaults cover the Vite dev server.
-_configured_origins = get_settings().frontend_origins
+# and from a separate static host in production. Origins are configured with
+# FRONTEND_URL (or FRONTEND_ORIGINS) in .env, comma-separated for several hosts.
+# Nothing is hardcoded here on purpose; a missing value fails loudly at startup
+# via Settings.cors_origins instead of silently rejecting every browser request.
+_settings = get_settings()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origin.strip() for origin in _configured_origins.split(",") if origin.strip()],
+    allow_origins=_settings.cors_origins,
+    allow_origin_regex=_settings.frontend_origin_regex,
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -38,6 +44,7 @@ app.include_router(voice_router)
 
 @app.on_event("startup")
 def initialize_database() -> None:
+    logger.info("CORS allowed origins: %s", _settings.cors_origins)
     init_database()
 
 @app.get("/")
