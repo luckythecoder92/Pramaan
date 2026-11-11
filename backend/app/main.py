@@ -45,6 +45,8 @@ app.include_router(voice_router)
 @app.on_event("startup")
 def initialize_database() -> None:
     logger.info("CORS allowed origins: %s", _settings.cors_origins)
+    # Fail fast here rather than on the first registration request.
+    logger.info("Email confirmation redirect: %s", _settings.email_confirmation_redirect_url)
     init_database()
 
 @app.get("/")

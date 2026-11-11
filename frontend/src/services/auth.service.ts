@@ -1,4 +1,6 @@
 import type {
+  ConfirmEmailPayload,
+  ConfirmEmailResponse,
   LoginPayload,
   LoginResponse,
   MeResponse,
@@ -17,6 +19,16 @@ export async function register(
 ): Promise<RegisterResponse> {
   const { data } = await api.post<RegisterResponse>(
     "/api/v1/auth/register",
+    payload,
+  );
+  return data;
+}
+
+export async function confirmEmail(
+  payload: ConfirmEmailPayload,
+): Promise<ConfirmEmailResponse> {
+  const { data } = await api.post<ConfirmEmailResponse>(
+    "/api/v1/auth/confirm",
     payload,
   );
   return data;

@@ -30,3 +30,16 @@ export interface MeResponse {
   success: boolean;
   user: AuthUser;
 }
+
+export interface ConfirmEmailPayload {
+  code?: string;
+  token_hash?: string;
+  type?: string;
+}
+
+export interface ConfirmEmailResponse {
+  success: boolean;
+  access_token: string | null;
+  token_type: string;
+  user: AuthUser | null;
+}

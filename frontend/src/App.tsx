@@ -12,6 +12,7 @@ import { LandingPage } from "./pages/LandingPage";
 import { LoginPage } from "./pages/LoginPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { RegisterPage } from "./pages/RegisterPage";
+import { AuthCallbackPage } from "./pages/AuthCallbackPage";
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              {/* Target of the Supabase email confirmation redirect. */}
+              <Route path="/auth/callback" element={<AuthCallbackPage />} />
 
               <Route element={<ProtectedRoute />}>
                 <Route

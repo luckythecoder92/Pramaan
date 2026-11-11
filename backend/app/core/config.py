@@ -40,6 +40,10 @@ class Settings(BaseSettings):
     frontend_origins: str | None = os.getenv("FRONTEND_URL")
     # Optional regex for preview deployments, e.g. https://.*\.vercel\.app
     frontend_origin_regex: str | None = None
+    # Optional explicit origin the email-confirmation link should land on.
+    # Falls back to the first FRONTEND_URL entry, which is normally the
+    # production frontend.
+    frontend_base_url: str | None = None
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).resolve().parents[2] / ".env",
@@ -71,6 +75,39 @@ class Settings(BaseSettings):
                 "FRONTEND_ORIGIN_REGEX is an alternative for preview domains."
             )
         return origins
+
+    @property
+    def frontend_origin(self) -> str:
+        """Origin used to build user-facing links (email confirmation redirect).
+
+        Restricted to the configured CORS allow-list so a typo cannot send
+        confirmation emails to an untrusted domain.
+        """
+        origins = self.cors_origins
+        base = normalize_origin(self.frontend_base_url) if self.frontend_base_url else ""
+
+        if not base and origins:
+            base = origins[0]
+
+        if not base:
+            raise RuntimeError(
+                "Cannot build the email confirmation redirect: set FRONTEND_URL "
+                "or FRONTEND_BASE_URL to the public frontend origin."
+            )
+
+        if origins and base not in origins:
+            raise RuntimeError(
+                f"FRONTEND_BASE_URL ({base}) is not one of the origins allowed by "
+                f"FRONTEND_URL ({', '.join(origins)}). Add it to FRONTEND_URL so the "
+                "frontend can call this API from the confirmation page."
+            )
+
+        return base
+
+    @property
+    def email_confirmation_redirect_url(self) -> str:
+        """Absolute frontend URL Supabase returns users to after confirmation."""
+        return f"{self.frontend_origin}/auth/callback"
 
 
 @lru_cache
