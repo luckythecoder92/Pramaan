@@ -1,9 +1,11 @@
 from functools import lru_cache
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-
+load_dotenv()
 class Settings(BaseSettings):
     supabase_url: str | None = None
     supabase_publishable_key: str | None = None
@@ -21,7 +23,7 @@ class Settings(BaseSettings):
     groq_reasoning_effort: str = "high"
     groq_timeout: float = 60.0
     groq_max_completion_tokens: int = 2048
-    frontend_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    frontend_origins: str = os.getenv("FRONTEND_URL")
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).resolve().parents[2] / ".env",
